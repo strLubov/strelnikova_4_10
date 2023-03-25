@@ -68,7 +68,6 @@ class RegistrationPage:
         browser.element(f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)').click()
         return self
 
-
     def fill_state(self, name):
         self.state.perform(command.js.scroll_into_view)
         self.state.click()
@@ -94,7 +93,8 @@ class RegistrationPage:
         self.submit.perform(command.js.click)
         return self
 
-    def should_registered_user_with(self, full_name, email, gender, number, dateofbirth, subjects, hobbies, photo, address, stateandcity):
+    def should_registered_user_with(self, full_name, email, gender, number, dateofbirth, subjects, hobbies, photo,
+                                    address, stateandcity):
         browser.element('.table').all('td').even.should(
             have.exact_texts(
                 full_name,
