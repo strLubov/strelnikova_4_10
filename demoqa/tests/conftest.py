@@ -9,13 +9,13 @@ import os
 from demoqa.utils import attach
 
 
-@pytest.fixture(scope="function")
-def open_browser():
-    browser.config.base_url = 'https://demoqa.com'
-
-    yield
-
-    browser.quit()
+# @pytest.fixture(scope="function")
+# def open_browser():
+#     browser.config.base_url = 'https://demoqa.com'
+#
+#     yield
+#
+#     browser.quit()
 
 
 DEFAULT_BROWSER_VERSION = "100.0"
@@ -33,7 +33,7 @@ def load_env():
     load_dotenv()
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='function', autouse=True)
 def setup_browser(request):
     browser_version = request.config.getoption('--browser_version')
     browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
@@ -56,6 +56,8 @@ def setup_browser(request):
         options=options
     )
     browser = Browser(Config(driver))
+
+    browser.config.base_url = 'https://demoqa.com'
 
     yield browser
 
