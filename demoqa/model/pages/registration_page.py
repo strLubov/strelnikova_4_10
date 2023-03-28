@@ -5,7 +5,7 @@ from demoqa.data.students import Student
 import os
 
 
-class RegistrationPage():
+class RegistrationPage:
     def __init__(self):
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
@@ -82,8 +82,8 @@ class RegistrationPage():
         ).click()
         return self
 
-    def open(self, setup_browser):
-        browser.open('https://demoqa.com/automation-practice-form')
+    def open(self):
+        browser.open('/automation-practice-form')
         browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
             have.size_greater_than_or_equal(3)
         )

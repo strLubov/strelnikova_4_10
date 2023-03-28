@@ -2,8 +2,6 @@ from demoqa.model.pages.registration_page import RegistrationPage
 from demoqa.data.students import Student
 import allure
 
-from demoqa.tests.conftest import setup_browser
-
 student = Student(first_name='Иван', last_name='Свиридов', user_email='IvanSviridov@gmail.com', gender='Male',
                   user_number='1234567891',
                   subjects='Computer Science', hobbies='Reading', address='Moscowskaya Street 18',
@@ -15,7 +13,7 @@ student = Student(first_name='Иван', last_name='Свиридов', user_emai
 def test_student_registration_form():
     registration_page = RegistrationPage()
     with allure.step("Open registrations form"):
-        registration_page.open(setup_browser)
+        registration_page.open()
 
     with allure.step("Fill form"):
         registration_page.registration_student(student)
