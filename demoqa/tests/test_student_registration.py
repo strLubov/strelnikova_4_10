@@ -11,6 +11,7 @@ student = Student(first_name='Иван', last_name='Свиридов', user_emai
 
 @allure.title("Successful fill form")
 def test_student_registration_form(setup_browser):
+    browser = setup_browser
     registration_page = RegistrationPage()
     with allure.step("Open registrations form"):
         registration_page.open()

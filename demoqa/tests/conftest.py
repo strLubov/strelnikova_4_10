@@ -1,9 +1,9 @@
 import pytest
 from dotenv import load_dotenv
 from selenium import webdriver
-from selene.support.shared import browser
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
+from selene.support.shared import browser
 import os
 
 from demoqa.utils import attach
@@ -56,6 +56,8 @@ def setup_browser(request):
         options=options
     )
     browser = Browser(Config(driver))
+
+    browser.config.base_url = 'https://demoqa.com'
 
     yield browser
 
