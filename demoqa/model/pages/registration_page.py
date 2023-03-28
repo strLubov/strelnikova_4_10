@@ -1,12 +1,12 @@
 from selene import have, command
-from selene.support.shared import browser
 from demoqa.data.students import Student
 
 import os
 
 
 class RegistrationPage:
-    def __init__(self):
+    def __init__(self, browser):
+        self.browser = browser
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
         self.user_email = browser.element('#userEmail')
@@ -66,7 +66,7 @@ class RegistrationPage:
         self.date_of_birth_input.click()
         self.month_of_birth.type(month)
         self.year_of_birth.type(year)
-        browser.element(f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)').click()
+        self.browser.element(f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)').click()
         return self
 
     def _fill_state(self, name):
@@ -83,11 +83,11 @@ class RegistrationPage:
         return self
 
     def open(self):
-        browser.open('/automation-practice-form')
-        browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
+        self.browser.open('https://demoqa.com/automation-practice-form')
+        self.browser.all('[id^=google_ads][id$=container__]').with_(timeout=10).wait_until(
             have.size_greater_than_or_equal(3)
         )
-        browser.all('[id^=google_ads][id$=container__]').perform(command.js.remove)
+        self.browser.all('[id^=google_ads][id$=container__]').perform(command.js.remove)
         return self
 
     def click_submit(self):
@@ -112,7 +112,7 @@ class RegistrationPage:
 
     def should_registered_user_with(self, full_name, email, gender, number, dateofbirth, subjects, hobbies, photo,
                                     address, stateandcity):
-        browser.element('.table').all('td').even.should(
+        self.browser.element('.table').all('td').even.should(
             have.exact_texts(
                 full_name,
                 email,
