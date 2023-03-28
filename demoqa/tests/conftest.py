@@ -9,13 +9,13 @@ import os
 from demoqa.utils import attach
 
 
-# @pytest.fixture(scope="function")
-# def open_browser():
-#     browser.config.base_url = 'https://demoqa.com'
-#
-#     yield
-#
-#     browser.quit()
+@pytest.fixture(scope="function")
+def open_browser():
+    browser.config.base_url = 'https://demoqa.com'
+
+    yield
+
+    browser.quit()
 
 
 DEFAULT_BROWSER_VERSION = "100.0"
