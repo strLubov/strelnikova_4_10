@@ -5,7 +5,7 @@ import allure
 student = Student(first_name='Иван', last_name='Свиридов', user_email='IvanSviridov@gmail.com', gender='Male',
                   user_number='1234567891',
                   subjects='Computer Science', hobbies='Reading', address='Moscowskaya Street 18',
-                  photo='demoqa/tests/resources',
+                  photo='/resources/foto.jpg',
                   day_of_birth='11', month_of_birth='May', year_of_birth='1999', state='NCR', city='Delhi')
 
 
