@@ -1,8 +1,6 @@
 from selene import have, command
 from demoqa.data.students import Student
-from demoqa import resources
 from pathlib import Path
-import os
 
 
 class RegistrationPage:
