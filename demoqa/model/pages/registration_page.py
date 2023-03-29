@@ -1,6 +1,10 @@
+import os
+
 from selene import have, command
 from demoqa.data.students import Student
 from pathlib import Path
+
+from demoqa.helpers import path
 
 
 class RegistrationPage:
@@ -58,7 +62,7 @@ class RegistrationPage:
         return self
 
     def _upload_photo(self, file):
-        self.photo.set_value(Path(f'resources/{file}').resolve())
+        self.photo.set_value(path(file))
         return self
 
     def _fill_date_of_birth(self, year, month, day):
